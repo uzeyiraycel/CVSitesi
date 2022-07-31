@@ -1,0 +1,23 @@
+﻿@model Mvc5Cv.Models.Entity.TblAdmin
+
+@{
+    ViewBag.Title = "AdminGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>KULLANICI GÜNCELLEME SAYFASI</h4>
+<br />
+<form method="post" class="form-group">
+    @Html.Label("ID")
+    @Html.TextBoxFor(m => m.Id, new { @class = "form-control", @readonly = true })
+    @Html.Label("KULLANICI ADI")
+    @Html.TextBoxFor(m => m.KullaniciAdi, new { @class = "form-control" })
+    @Html.Label("ŞİFRE")
+    @Html.TextBoxFor(m => m.Sifre, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">KULLANICI GÜNCELLE</button>
+</form>
+
+
+

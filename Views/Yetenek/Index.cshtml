@@ -1,0 +1,95 @@
+﻿@using Mvc5Cv.Models.Entity
+@model List<TblYeteneklerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ string progressrenk = "";
+    string labelrenk = "";}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Yetenek Listem</h3>
+                            </div>
+                            <div class="card-body">
+                                <a href="/Yetenek/YetenekEkle/" class="btn btn-info">YENİ YETENEK EKLE</a>
+                                <br />
+                                <br />
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">ID</th>
+                                            <th>YETENEK</th>
+                                            <th>DERECE</th>
+                                            <th style="width: 40px">ORAN</th>
+                                            <th>DÜZENLE</th>
+                                            <th>SİL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var i in Model)
+                                        {
+                                            if (i.Oran >= 0 && i.Oran <= 50) //kırmızırenk
+                                            {
+                                                progressrenk = "progress-bar bg-danger";
+                                                labelrenk = "badge bg-danger";
+                                            }
+                                            if (i.Oran >= 51 && i.Oran <= 70) //mavi renk
+                                            {
+                                                progressrenk = "progress-bar bg-primary";
+                                                labelrenk = "badge bg-primary";
+                                            }
+                                            if (i.Oran >= 71 && i.Oran <= 84) //sarırenk
+                                            {
+                                                progressrenk = "progress-bar bg-warning";
+                                                labelrenk = "badge bg-warning";
+                                            }
+                                            if (i.Oran >= 85 && i.Oran <= 100) //yeşilrenk
+                                            {
+                                                progressrenk = "progress-bar bg-success";
+                                                labelrenk = "badge bg-success";
+                                            }
+                                            <tr>
+                                                <th>@i.Id</th>
+                                                <td>@i.Yetenek</td>
+                                                <td>
+                                                    <div class="progress progress-xs">
+                                                        <div class="@progressrenk" style="width: @i.Oran%"></div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="@labelrenk">@i.Oran%</span></td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" href="/Yetenek/YetenekGetir/@i.Id">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
+                                                        Düzenle
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm" href="/Yetenek/YetenekSil/@i.Id">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                        Sil
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

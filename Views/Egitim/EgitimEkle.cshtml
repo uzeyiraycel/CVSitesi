@@ -1,0 +1,28 @@
+﻿@model Mvc5Cv.Models.Entity.TblEgitimlerim
+@{
+    ViewBag.Title = "EgitimEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>YENİ EĞİTİM BİLGİSİ EKLEME SAYFASI</h4>
+<br />
+<form method="post" class="form-group">
+    @Html.Label("OKUL")
+    @Html.TextBoxFor(m => m.Baslik, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Baslik, "", new { @style = "color:red" }) @*buradaki mesaj baslik için çalışacak m=>m.baslik olduğu için*@
+    @*validationmessagefor da çift tırnak ile içini boş bıraktık çünkü required ı classda tanımlarken mesajın ne olarak gösterilmesi gerektiğini tanımlamıştık . burada boş bıraktık o yüzden.*@
+    <br />
+    @Html.Label("FAKÜLTE")
+    @Html.TextBoxFor(m => m.AltBaslik1, new { @class = "form-control" })
+    @Html.Label("BÖLÜM")
+    @Html.TextBoxFor(m => m.AltBaslik2, new { @class = "form-control" })
+    @Html.Label("GNO")
+    @Html.TextBoxFor(m => m.Gno, new { @class = "form-control", @maxlength = "4", @placeholder = "4.00 ÜZERİNDEN NOTUNUZU GİRİNİZ" })
+    @Html.Label("TARİH")
+    @Html.TextBoxFor(m => m.Tarih, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.Tarih, "", new { @style = "color:red" })
+    <br />
+    <button class="btn btn-info">EĞİTİM EKLE</button>
+</form>
+

@@ -1,0 +1,20 @@
+﻿@using Mvc5Cv.Models.Entity
+@model List<TblHobilerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>HOBİ SAYFASI</h2>
+<br />
+@foreach (var i in Model)
+{
+    <label>AÇIKLAMA 1</label>
+    <textarea rows="3" class="form-control" name="Aciklama1" readonly="true">@i.Aciklama1</textarea>
+    <label>AÇIKLAMA 2</label>
+    <textarea rows="3" class="form-control" name="Aciklama2" readonly="true">@i.Aciklama2</textarea>
+    <br />
+    <a href="/Hobi/HobiGetir/@i.Id" class="btn btn-info">GÜNCELLEME SAYFASINA GİT</a>
+}
+

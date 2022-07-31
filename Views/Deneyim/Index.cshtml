@@ -1,0 +1,34 @@
+﻿@using Mvc5Cv.Models.Entity
+@model List<TblDeneyimlerim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Deneyim Listesi</h2>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>FİRMA ADI</th>
+        <th>POZİSYON</th>
+        <th>AÇIKLAMA</th>
+        <th>TARİH</th>
+        <th>SİL</th>
+        <th>DÜZENLE</th>
+    </tr>
+    @foreach (var i in Model)
+    {
+<tr>
+    <th>@i.Id</th>
+    <td>@i.Baslik</td>
+    <td>@i.AltBaslik</td>
+    <td>@i.Aciklama</td>
+    <td>@i.Tarih</td>
+    <td><a href="/Deneyim/DeneyimSil/@i.Id" class="btn btn-danger">SİL</a></td>
+    <td><a href="/Deneyim/DeneyimGetir/@i.Id" class="btn btn-warning">DÜZENLE</a></td>
+</tr>
+    }
+</table>
+<a href="/Deneyim/DeneyimEkle/" class="btn btn-info">YENİ DENEYİM EKLE</a>
+

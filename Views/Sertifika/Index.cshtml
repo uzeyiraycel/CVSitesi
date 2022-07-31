@@ -1,0 +1,61 @@
+﻿@using Mvc5Cv.Models.Entity
+@model List<TblSertifikalarim>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@{ string renk = "";
+    string renk2 = "";}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header p-2">
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-pane" id="timeline">
+                                <div class="timeline timeline-inverse">
+                                    @foreach (var i in Model)
+                                    {
+                                        if (i.Id % 2 == 1)
+                                        {
+                                            renk = "btn btn-success"; //yeşil renk
+                                            renk2 = "bg-success";
+                                        }
+                                        if (i.Id % 2 == 0)
+                                        {
+                                            renk = "btn btn-primary"; //mavi renk
+                                            renk2 = "bg-primary";
+                                        }
+                                        <div class="time-label">
+                                            <a href="/Sertifika/SertifikaGetir/@i.Id" class="@renk">
+                                                <span class="@renk2">
+                                                    @i.Tarih
+                                                </span>
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <i class="fas fa-comment @renk2"></i>
+                                            <div class="timeline-item">
+                                                <div class="timeline-body">
+                                                    @i.Aciklama
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                                <a href="/Sertifika/SertifikaEkle/" class="btn btn-info">YENİ SERTİFİKA GİRİŞİ</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

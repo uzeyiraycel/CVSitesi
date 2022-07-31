@@ -1,0 +1,92 @@
+﻿@using Mvc5Cv.Models.Entity
+@model List<TblSosyalMedya>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">SOSYAL MEDYA LİSTESİ</h3>
+                            </div>
+                            <div class="card-body">
+                                <button class="btn btn-info" data-toggle="modal" data-target="#Modal1"> YENİ SOSYAL MEDYA EKLE</button> @*BU POP-UP BUTONUNA TIKLAYINCA POPUP AÇILACAK.*@
+                                <br />
+                                <br />
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="width: 10px">ID</th>
+                                            <th>SOSYAL MEDYA</th>
+                                            <th>DURUM</th>
+                                            <th>DÜZENLE</th>
+                                            <th>SİL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var i in Model)
+                                        {
+                                            <tr>
+                                                <th>@i.Id</th>
+                                                <td>@i.Ad</td>
+                                                <td>@i.Durum</td>
+                                                <td>
+                                                    <a class="btn btn-info btn-sm" href="/SosyalMedya/SayfaGetir/@i.Id">
+                                                        <i class="fas fa-pencil-alt">
+                                                        </i>
+                                                        Düzenle
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-danger btn-sm" href="/SosyalMedya/Sil/@i.Id">
+                                                        <i class="fas fa-trash">
+                                                        </i>
+                                                        Sil
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @*POP-UP KULLANIMI*@
+        <div class="modal" id="Modal1">
+            <div class="modal-dialog">
+                <div class="modal-content"> @*içerik hazırlanmış olur*@
+                    <div class="modal-header"> @*Başlık kısmını vereceğiz*@
+                    <h2>SOSYAL MEDYA EKLEME PANELİ</h2>
+                    </div>
+                <form method="post" action="/SosyalMedya/Ekle/"> @*bu kısım form post olunca çalışacak*@
+                    <div class="modal-body">
+                        @*modelin gövde kısmını oluşturacağız burada*@
+                        <label>SOSYAL MEDYA İSMİ</label>
+                        <input type="text" name="Ad" class="form-control" />
+                        <br />
+                        <label>SOSYAL MEDYA LİNKİ</label>
+                        <input type="text" name="Link" class="form-control" />
+                        <br />
+                        <label>ICON DEĞERİ</label>
+                        <input type="text" name="Icon" class="form-control" />
+                        <br />
+                        <button class="btn btn-info">KAYDET</button>
+                    </div>
+                </form>
+                </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

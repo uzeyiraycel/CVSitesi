@@ -1,0 +1,37 @@
+﻿@using Mvc5Cv.Models.Entity
+@model List<TblHakkimda>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>HAKKIMDA SAYFASI</h2>
+<br />
+@foreach (var i in Model)
+{
+    <label>AD</label>
+    <input type="text" class="form-control" name="Ad" value="@i.Ad" readonly="true" />
+    <label>SOYAD</label>
+    <input type="text" class="form-control" name="Soyad" value="@i.Soyad" readonly="true" />
+    
+    <label>ADRES</label>
+    <input type="text" class="form-control" name="Adres" value="@i.Adres" readonly="true" />
+    
+    <label>MAİL</label>
+    <input type="text" class="form-control" name="Mail" value="@i.Mail" readonly="true" />
+    
+    <label>TELEFON</label>
+    <input type="text" class="form-control" name="Telefon" value="@i.Telefon" readonly="true" />
+    
+    <label>AÇIKLAMA</label>
+    <textarea rows="3" class="form-control" name="Aciklama" readonly="true">@i.Aciklama</textarea>
+    
+    <label>RESİM</label>
+    <input type="text" class="form-control" name="Resim" value="@i.Resim" readonly="true" />
+    <br />
+    <a href="/Hakkimda/HakkimdaGetir/@i.Id" class="btn btn-info">GÜNCELLEME SAYFASINA GİT</a>
+}
+
+
+

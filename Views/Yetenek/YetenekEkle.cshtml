@@ -1,0 +1,18 @@
+﻿@model Mvc5Cv.Models.Entity.TblYeteneklerim
+@{
+    ViewBag.Title = "YetenekEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h4>YENİ YETENEK EKLEME SAYFASI</h4>
+<br />
+<form method="post" class="form-group">
+    @Html.Label("YETENEK ADI")
+    @Html.TextBoxFor(m => m.Yetenek, new { @class = "form-control" })
+    @Html.Label("BİLGİ DERECESİ")
+    @Html.TextBoxFor(m => m.Oran, new { @class = "form-control" , @maxlength = "3" , @placeholder = "0-100 ARASI DEĞER GİRİNİZ..." })
+    <br />
+    <button class="btn btn-info">YETENEK EKLE</button>
+</form>
+
